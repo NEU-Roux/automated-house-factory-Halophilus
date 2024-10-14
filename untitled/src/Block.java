@@ -25,4 +25,20 @@ abstract public class Block {
     // unitWeight getters and setters
     public double getUnitWeight() {return unitWeight;}
     protected void setUnitWeight(double unitWeight) {this.unitWeight = unitWeight;}
+
+    // breakBlock method, unimplemented
+    public void breakBlock(){}
+
+    // toString override
+    @Override
+    public String toString() {
+        String blockType = switch (resourceType) {
+            case WOOD -> "Wood";
+            case STONE -> "Stone";
+            case HOUSE -> "House";
+            default -> "Undefined";
+        };
+        String weight = String.format("%.2f", unitWeight);
+        return blockType + "block, weight: " + weight;
+    }
 }
