@@ -4,7 +4,7 @@
  * Date: 10/14/2024
  * Notes: Complex factory simulation
  */
-public abstract class Resource {
+public class Resource {
     private double storedWeight;
     private ResourceType resourceType;
 
