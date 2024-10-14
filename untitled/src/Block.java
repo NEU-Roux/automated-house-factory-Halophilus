@@ -9,7 +9,7 @@ abstract public class Block {
     private double unitWeight;
 
     // Standard constructor
-    public Block(ResourceType resourceType, int unitWeight) {
+    public Block(ResourceType resourceType, double unitWeight) {
         setResourceType(resourceType);
         setUnitWeight(unitWeight);
     }
@@ -20,9 +20,9 @@ abstract public class Block {
 
     // resourceType getters and setters
     public ResourceType getResourceType() {return resourceType;}
-    public void setResourceType(ResourceType resourceType) {this.resourceType = resourceType;}
+    protected void setResourceType(ResourceType resourceType) {this.resourceType = resourceType;}
 
     // unitWeight getters and setters
     public double getUnitWeight() {return unitWeight;}
-    public void setUnitWeight(double unitWeight) {this.unitWeight = unitWeight;}
+    protected void setUnitWeight(double unitWeight) {this.unitWeight = unitWeight;}
 }
