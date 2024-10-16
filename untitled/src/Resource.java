@@ -21,24 +21,20 @@ public class Resource {
     // Access/mutators for storedWeight
     public double getStoredWeight() {return storedWeight;}
 
-    private void setStoredWeight(double storedWeight) throws NegativeResource{
-        if (storedWeight > 0) {this.storedWeight = storedWeight;}
+    private void setStoredWeight(double storedWeight) throws NegativeResource {
+        if (storedWeight >= 0) {this.storedWeight = storedWeight;}
         else {throw new NegativeResource("The stored weight cannot be negative.");}
 
     }
 
     // Access/mutators for resourceType
-    public ResourceType getResourceType() {return resourceType;}
+    public ResourceType getType() {return resourceType;}
     private void setResourceType(ResourceType resourceType) {this.resourceType = resourceType;}
 
     // Function for modifying resource quantities
-    public void modifyResource(double resourceAmount){
-        // resourceAmount can be positive or negative
-        try { setStoredWeight(getStoredWeight() + resourceAmount); }
-        catch (NegativeResource nr){
-            System.out.println(nr.getMessage());
-            System.out.println("Setting stored weight to zero.");
-            setStoredWeight(0);
-        }
+    public void modifyResource(double resourceAmount) throws NegativeResource{
+        resourceAmount += getStoredWeight();
+        if (resourceAmount >= 0) {setStoredWeight(resourceAmount);}
+        else {throw new NegativeResource("The stored weight cannot be negative.");}
     }
 }

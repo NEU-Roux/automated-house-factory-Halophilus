@@ -16,7 +16,7 @@ abstract public class Block {
 
     // House constructor
     // Takes two
-    public Block(){}
+    public Block(Block blockA, Block blockB){}
 
     // resourceType getters and setters
     public ResourceType getResourceType() {return resourceType;}
@@ -27,7 +27,9 @@ abstract public class Block {
     protected void setUnitWeight(double unitWeight) {this.unitWeight = unitWeight;}
 
     // breakBlock method, unimplemented
-    public void breakBlock(){}
+    public Resource breakBlock(){
+        return null;
+    }
 
     // toString override
     @Override

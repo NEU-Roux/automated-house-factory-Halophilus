@@ -7,10 +7,10 @@
 // A static, final repository for global variables
 public final class Const {
     // Block weights
-    public static final double STONE_WEIGHT = 1.0;
-    public static final double WOOD_WEIGHT = 1.0;
+    public static final double STONE_WEIGHT = 5.5;
+    public static final double WOOD_WEIGHT = 2.5;
 
     // House recipe info
-    public static final int WOOD_IN_HOUSE = 1;
-    public static final int STONE_IN_HOUSE = 1;
+    public static final int WOOD_IN_HOUSE = 10;
+    public static final int STONE_IN_HOUSE = 4;
 }
