@@ -22,19 +22,25 @@ public class StoneBlockFactory implements Factory{
                 System.out.println("UPDATED STONE INVENTORY");
                 displayInventory();
 
-            } else {System.out.println("StoneBlockFactory.takeResource: Resource type mismatch");}
+            } else {
+                //System.out.println("StoneBlockFactory.takeResource: Resource type mismatch");
+            }
 
         } else if (intake == null) {
-            System.out.println("StoneBlockFactory.takeResource: Null resource");
+            //System.out.println("StoneBlockFactory.takeResource: Null resource");
 
         } else {
-            System.out.println("StoneBlockFactory.takeResource: Illegal resource type");
+            //System.out.println("StoneBlockFactory.takeResource: Illegal resource type");
         }
     }
 
     public Block produce(){
         try {
+
             bin.modifyResource(-Const.STONE_WEIGHT);
+            System.out.println("STONE BLOCK PRODUCED");
+            System.out.println("UPDATED STONE INVENTORY: ");
+            displayInventory();
             return new StoneBlock();
         }
         catch (NegativeResource nr){System.out.println(nr.getMessage());}

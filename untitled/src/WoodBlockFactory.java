@@ -11,8 +11,8 @@ public class WoodBlockFactory implements Factory{
     }
 
     public void takeResource(Object intake) {
-        if (intake instanceof Resource) {
-            if (((Resource) intake).getType() == ResourceType.WOOD) {
+        if (intake instanceof Resource) { // If the Object is a valid Resource...
+            if (((Resource) intake).getType() == ResourceType.WOOD) { //
                 double availableResource = ((Resource) intake).getStoredWeight();
                 System.out.println("AVAILABLE WOOD RESOURCE: " + availableResource);
                 System.out.println("EXISTING WOOD INVENTORY");
@@ -21,23 +21,29 @@ public class WoodBlockFactory implements Factory{
                 ((Resource) intake).modifyResource(-availableResource);
                 System.out.println("UPDATED WOOD INVENTORY");
                 displayInventory();
-
-            } else {System.out.println("WoodBlockFactory.takeResource: Resource type mismatch");}
+            //
+            } else {//System.out.println("WoodBlockFactory.takeResource: Resource type mismatch");
+            }
 
         } else if (intake == null) {
-            System.out.println("WoodBlockFactory.takeResource: Null resource");
+            //System.out.println("WoodBlockFactory.takeResource: Null resource");
 
         } else {
-            System.out.println("WoodBlockFactory.takeResource: Illegal resource type");
+            //System.out.println("WoodBlockFactory.takeResource: Illegal resource type");
         }
     }
 
     public Block produce(){
         try {
             bin.modifyResource(-Const.WOOD_WEIGHT);
+            System.out.println("WOOD BLOCK GENERATED");
+            System.out.println("UPDATED STONE INVENTORY: ");
+            displayInventory();
             return new WoodBlock();
         }
-        catch (NegativeResource nr){System.out.println(nr.getMessage());}
+        catch (NegativeResource nr){
+            //System.out.println(nr.getMessage());
+        }
         return null;
     }
 

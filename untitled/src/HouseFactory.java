@@ -14,9 +14,9 @@ public class HouseFactory implements Factory{
                 woodBlocks++;
             }
         } else if (intake == null) {
-            System.out.println("WoodBlockFactory.takeResource: Null resource");
+            //System.out.println("WoodBlockFactory.takeResource: Null resource");
         } else {
-            System.out.println("WoodBlockFactory.takeResource: Illegal resource type");
+            //System.out.println("WoodBlockFactory.takeResource: Illegal resource type");
         }
     }
 
