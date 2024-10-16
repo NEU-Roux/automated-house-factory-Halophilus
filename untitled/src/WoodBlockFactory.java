@@ -14,11 +14,19 @@ public class WoodBlockFactory implements Factory{
         if (intake instanceof Resource) {
             if (((Resource) intake).getType() == ResourceType.WOOD) {
                 double availableResource = ((Resource) intake).getStoredWeight();
+                System.out.println("AVAILABLE WOOD RESOURCE: " + availableResource);
+                System.out.println("EXISTING WOOD INVENTORY");
+                displayInventory();
                 bin.modifyResource(availableResource);
                 ((Resource) intake).modifyResource(-availableResource);
+                System.out.println("UPDATED WOOD INVENTORY");
+                displayInventory();
+
             } else {System.out.println("WoodBlockFactory.takeResource: Resource type mismatch");}
+
         } else if (intake == null) {
             System.out.println("WoodBlockFactory.takeResource: Null resource");
+
         } else {
             System.out.println("WoodBlockFactory.takeResource: Illegal resource type");
         }

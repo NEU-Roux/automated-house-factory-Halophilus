@@ -14,13 +14,21 @@ public class StoneBlockFactory implements Factory{
         if (intake instanceof Resource) {
             if (((Resource) intake).getType() == ResourceType.STONE) {
                 double availableResource = ((Resource) intake).getStoredWeight();
+                System.out.println("AVAILABLE STONE RESOURCE: " + availableResource);
+                System.out.println("EXISTING STONE INVENTORY");
+                displayInventory();
                 bin.modifyResource(availableResource);
                 ((Resource) intake).modifyResource(-availableResource);
+                System.out.println("UPDATED STONE INVENTORY");
+                displayInventory();
+
             } else {System.out.println("StoneBlockFactory.takeResource: Resource type mismatch");}
+
         } else if (intake == null) {
-            System.out.println("WoodBlockFactory.takeResource: Null resource");
+            System.out.println("StoneBlockFactory.takeResource: Null resource");
+
         } else {
-            System.out.println("WoodBlockFactory.takeResource: Illegal resource type");
+            System.out.println("StoneBlockFactory.takeResource: Illegal resource type");
         }
     }
 
