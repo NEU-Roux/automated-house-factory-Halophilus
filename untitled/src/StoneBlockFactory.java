@@ -11,7 +11,7 @@ public class StoneBlockFactory implements Factory{
     private final ElementalFactoryDelegate delegate;
 
     public StoneBlockFactory(){
-        delegate = new ElementalFactoryDelegate(ResourceType.STONE;
+        delegate = new ElementalFactoryDelegate(ResourceType.STONE);
     }
 
     public ArrayList<Resource> takeResource(ArrayList<Resource> intake){

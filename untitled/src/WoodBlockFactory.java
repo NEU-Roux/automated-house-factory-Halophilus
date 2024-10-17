@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 
 // Delegation of the WoodBlockFactory
-public class WoodBlockFactory{
+public class WoodBlockFactory implements Factory{
     private final ElementalFactoryDelegate delegate;
 
     public WoodBlockFactory(){

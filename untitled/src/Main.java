@@ -17,9 +17,9 @@ public class Main
 
         ArrayList<Resource> resources;
 
-        Factory stoneBlockProducer = (Factory) new StoneBlockFactory();
-        Factory woodBlockProducer = (Factory) new WoodBlockFactory();
-        Factory houseBlockProducer = new HouseFactory();
+        Factory stoneBlockProducer = new StoneBlockFactory();
+        Factory woodBlockProducer = new WoodBlockFactory();
+        HouseFactory houseBlockProducer = new HouseFactory(); // HouseFactory has unique underlying functionality
 
         Block h1;
 
@@ -34,8 +34,8 @@ public class Main
             //    case WOOD: woodBlockProducer.takeResource(resource); break;
             //}
 
-            resources = woodBlockProducer.takeResource(resources);
-            resources = stoneBlockProducer.takeResource(resources);
+            woodBlockProducer.takeResource(resources);
+            stoneBlockProducer.takeResource(resources);
 
             houseBlockProducer.takeResource(stoneBlockProducer.produce());
             houseBlockProducer.takeResource(woodBlockProducer.produce());
