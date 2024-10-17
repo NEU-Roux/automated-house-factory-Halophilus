@@ -6,11 +6,12 @@
  */
 
 //
-public class ElementalFactory implements Factory{
+public class ElementalFactoryDelegate implements Factory{
+    // Delegate for handling Factory behaviors for elemental ResourceTypes
     public Resource bin;
     public ResourceType resourceType;
 
-    public ElementalFactory(ResourceType resourceType) {
+    public ElementalFactoryDelegate(ResourceType resourceType) {
         // New Resource delegate for accumulating storedWeight
         this.resourceType = resourceType;
         bin = new Resource(this.resourceType, 0);
@@ -21,12 +22,11 @@ public class ElementalFactory implements Factory{
         return bin.takeResource(intake);
     }
 
+    // Produces Blocks of local ResourceType, null default
     public Block produce(){
         try {
-            bin.modifyResource(-Const.WOOD_WEIGHT);
-            System.out.println("WOOD BLOCK GENERATED");
-            System.out.println("UPDATED STONE INVENTORY: ");
-            displayInventory();
+            bin.modifyResource(-resourceType.getWeight());
+
             return new WoodBlock();
         }
         catch (NegativeResource nr){

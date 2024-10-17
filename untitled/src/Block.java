@@ -5,42 +5,38 @@
  * Notes: Complex factory simulation
  */
 abstract public class Block {
+    // Singular class for all variations of the Block object
     private ResourceType resourceType;
-    private double unitWeight;
+    private boolean broken;// Default false
+    private boolean depleted;
 
     // Standard constructor
-    public Block(ResourceType resourceType, double unitWeight) {
+    public Block(ResourceType resourceType) {
         setResourceType(resourceType);
-        setUnitWeight(unitWeight);
     }
-
-    // House constructor
-    // Takes two
-    public Block(Block blockA, Block blockB){}
 
     // resourceType getters and setters
     public ResourceType getResourceType() {return resourceType;}
-    protected void setResourceType(ResourceType resourceType) {this.resourceType = resourceType;}
+    public void setResourceType(ResourceType resourceType) {this.resourceType = resourceType;}
 
-    // unitWeight getters and setters
-    public double getUnitWeight() {return unitWeight;}
-    protected void setUnitWeight(double unitWeight) {this.unitWeight = unitWeight;}
+    // Blocks that
+    public boolean isBroken() {return broken;}
+    public boolean isDepleted() {return depleted;}
 
-    // breakBlock method, unimplemented
+    private void setBroken(boolean broken) {this.broken = broken;}
+    private void setDepleted(boolean depleted) {this.depleted = depleted;}
+
+    // breakBlock method
     public Resource breakBlock(){
+
+        setBroken(true);
         return null;
     }
 
     // toString override
     @Override
     public String toString() {
-        String blockType = switch (resourceType) {
-            case WOOD -> "Wood";
-            case STONE -> "Stone";
-            case HOUSE -> "House";
-            default -> "Undefined";
-        };
-        String weight = String.format("%.2f", unitWeight);
-        return blockType + "block, weight: " + weight;
+        String weight = String.format("%.2f", resourceType.getWeight());
+        return resourceType + "block, weight: " + weight;
     }
 }
