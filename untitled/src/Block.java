@@ -22,9 +22,8 @@ import java.util.Map;
     public ResourceType getResourceType() {return resourceType;}
     public void setResourceType(ResourceType resourceType) {this.resourceType = resourceType;}
 
-    // Blocks that
+    // broken Block functionality
     public boolean isBroken() {return broken;}
-
     private void setBroken() {this.broken = true;}
 
     // breakBlock method

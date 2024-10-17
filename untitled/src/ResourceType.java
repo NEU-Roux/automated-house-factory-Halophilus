@@ -9,7 +9,7 @@ import java.util.Map;
  */
 public enum ResourceType {
     // Repository of ResourceType data
-    // Public static final ResourceType STONE = new ResourceType(5.5);
+    // Public static final ResourceType STONE = new ResourceType(5.5, "Stone",);
     STONE(Const.STONE_WEIGHT, "Stone", Const.STONE_RETURN),
     WOOD(Const.WOOD_WEIGHT, "Wood", Const.WOOD_RETURN),
 
@@ -20,17 +20,19 @@ public enum ResourceType {
     private final String name;
     private final Map<ResourceType, Double> yields;
 
-
+    // Constructor
     ResourceType(double weight, String name, Map<ResourceType, Double> yields) {
         this.weight = weight;
         this.name = name;
         this.yields = yields;
     }
+
     // Getters for ResourceType fields
     public double getWeight() {return this.weight;}
     public String getName() {return this.name;}
     public Map<ResourceType, Double> getYields() {return yields;}
 
+    // Human-readable block types
     @Override
     public String toString() {
         return getName();

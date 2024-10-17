@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * Notes: Complex factory simulation
  */
 
-//
+// Delegate class for WoodBlockFactory and StoneBlockFactory
 public class ElementalFactoryDelegate implements Factory{
     // Delegate for handling Factory behaviors for elemental ResourceTypes
     public Resource bin;
@@ -19,13 +19,12 @@ public class ElementalFactoryDelegate implements Factory{
         bin = new Resource(this.resourceType, 0);
     }
 
-    // Flag for successful object intake
+    // Processes list of Resources and extracts storedWeight from matching ResourceTypes
     public ArrayList<Resource> takeResource(ArrayList<Resource> resources){
         return bin.takeResource(resources);
     }
 
-    //
-    // Produces Blocks of local ResourceType, null default
+    // Produces Blocks of local ResourceType, null default if insufficient resources are present
     public Block produce(){
         try {
             bin.modifyResource(-resourceType.getWeight());
@@ -38,6 +37,7 @@ public class ElementalFactoryDelegate implements Factory{
         return null;
     }
 
+    // Displays storedWeight
     public void displayInventory(){
         System.out.printf("%.2f\n", bin.getStoredWeight());
     }
