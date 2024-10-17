@@ -35,6 +35,7 @@ public class Main
             //}
 
             // Extract resources relevant to the factory
+            // Mutates elements in resources in place
             woodBlockProducer.takeResource(resources);
             stoneBlockProducer.takeResource(resources);
 

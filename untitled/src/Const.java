@@ -24,6 +24,7 @@ public final class Const {
     public static Map<ResourceType, Double> STONE_RETURN = new HashMap<ResourceType, Double>();
     public static Map<ResourceType, Double> WOOD_RETURN = new HashMap<ResourceType, Double>();
 
+    // Add return values
     static {
         HOUSE_RETURN.put(ResourceType.STONE, STONE_IN_HOUSE * STONE_WEIGHT);
         STONE_RETURN.put(ResourceType.STONE, STONE_WEIGHT);
