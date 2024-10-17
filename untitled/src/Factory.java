@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /******
  * Name: Ben Henshaw
  * Assignment: Lab 04: Automated House Factory
@@ -5,7 +7,7 @@
  * Notes: Complex factory simulation
  */
 public interface Factory {
-    boolean takeResource(Object resourceBlock);
+    ArrayList<Resource> takeResource(ArrayList<Resource> resources);
     Block produce();
     void displayInventory();
 }

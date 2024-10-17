@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /******
  * Name: Ben Henshaw
  * Assignment: Lab 04: Automated House Factory
@@ -18,8 +20,8 @@ public class ElementalFactoryDelegate implements Factory{
     }
 
     // Flag for successful object intake
-    public boolean takeResource(){
-        return bin.takeResource(intake);
+    public ArrayList<Resource> takeResource(ArrayList<Resource> resources){
+        return bin.takeResource(resources);
     }
 
     //

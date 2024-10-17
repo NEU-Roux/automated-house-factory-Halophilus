@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class HouseFactory implements Factory{
     public int stoneBlocks;
     public int woodBlocks;
@@ -7,11 +9,12 @@ public class HouseFactory implements Factory{
         woodBlocks = 0;
     }
 
+    // TakeResource where a block is taken
     public boolean takeResource(Object intake) {
-        if (intake instanceof Block) {
-            if (((Block) intake).getResourceType() == ResourceType.STONE) {
+        if (intake instanceof Block intakeBlock) { //
+            if (intakeBlock.getResourceType()==ResourceType.STONE) {
                 stoneBlocks++;
-            } else if (((Block) intake).getResourceType() == ResourceType.WOOD) {
+            } else if (intakeBlock.getResourceType()==ResourceType.WOOD) {
                 woodBlocks++;
             }
         } else if (intake == null) {
@@ -22,11 +25,17 @@ public class HouseFactory implements Factory{
         return false;
     }
 
+    // Implementation for handling list of raw material.
+    @Override
+    public ArrayList<Resource> takeResource(ArrayList<Resource> resources) {
+        return null;
+    }
+
     public Block produce(){
         if (stoneBlocks >= Const.STONE_IN_HOUSE && woodBlocks >= Const.WOOD_IN_HOUSE) {
             stoneBlocks -= Const.STONE_IN_HOUSE;
             woodBlocks -= Const.WOOD_IN_HOUSE;
-            return new HouseBlock();
+            return new Block(ResourceType.HOUSE);
         }
         return null;
     }

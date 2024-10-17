@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /******
  * Name: Ben Henshaw
  * Assignment: Lab 04: Automated House Factory
@@ -13,7 +15,7 @@ public class WoodBlockFactory{
         delegate = new ElementalFactoryDelegate(ResourceType.WOOD);
     }
 
-    public boolean takeResource(Object intake){
+    public ArrayList<Resource> takeResource(ArrayList<Resource> intake){
         return delegate.takeResource(intake);
     }
 

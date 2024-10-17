@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 import java.lang.Math;
 
@@ -14,24 +15,27 @@ public class Main
 {
     public static void main(String[] args) throws InterruptedException {
 
-        Resource resource;
+        ArrayList<Resource> resources;
 
         Factory stoneBlockProducer = (Factory) new StoneBlockFactory();
         Factory woodBlockProducer = (Factory) new WoodBlockFactory();
-        Factory houseBlockProducer = (Factory) new HouseFactory();
+        Factory houseBlockProducer = new HouseFactory();
 
         Block h1;
 
         //Infinite simulation loop CTRL + C to terminate simulation
         while(true)
         {
-            resource = mineResource();
+            resources = mineResource();
 
-            switch(resource.getType())
-            {
-                case STONE: stoneBlockProducer.takeResource(resource); break;
-                case WOOD: woodBlockProducer.takeResource(resource); break;
-            }
+            //switch(resource.getType())
+            //{
+            //    case STONE: stoneBlockProducer.takeResource(resource); break;
+            //    case WOOD: woodBlockProducer.takeResource(resource); break;
+            //}
+
+            resources = woodBlockProducer.takeResource(resources);
+            resources = stoneBlockProducer.takeResource(resources);
 
             houseBlockProducer.takeResource(stoneBlockProducer.produce());
             houseBlockProducer.takeResource(woodBlockProducer.produce());
@@ -58,9 +62,11 @@ public class Main
     }
 
     //generate a random Resource with a random weight
-    public static Resource mineResource()
+    // EXTENSION: Packages Resource objects in ArrayList
+    public static ArrayList<Resource> mineResource()
     {
         Random r = new Random();
+        ArrayList<Resource> resourceList = new ArrayList<Resource>();
 
         ResourceType type = ResourceType.STONE;
         double weight = Math.round((Math.abs(r.nextDouble()))*100.0)/10.0 ;
@@ -72,7 +78,8 @@ public class Main
             case 1: type = ResourceType.WOOD; break;
         }
         System.out.println("GENERATED " + type + " OF WEIGHT " + weight);
-        return new Resource(type, weight);
+        resourceList.add(new Resource(type, weight));
+        return resourceList;
     }
 }
 

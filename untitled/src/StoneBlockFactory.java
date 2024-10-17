@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /******
  * Name: Ben Henshaw
  * Assignment: Lab 04: Automated House Factory
@@ -5,14 +7,14 @@
  * Notes: Complex factory simulation
  */
 // Delegation of the StoneBlockFactory
-public class StoneBlockFactory{
+public class StoneBlockFactory implements Factory{
     private final ElementalFactoryDelegate delegate;
 
     public StoneBlockFactory(){
         delegate = new ElementalFactoryDelegate(ResourceType.STONE;
     }
 
-    public boolean takeResource(Object intake){
+    public ArrayList<Resource> takeResource(ArrayList<Resource> intake){
         return delegate.takeResource(intake);
     }
 
