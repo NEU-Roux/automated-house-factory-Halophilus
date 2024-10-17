@@ -4,33 +4,19 @@
  * Date: 10/14/2024
  * Notes: Complex factory simulation
  */
+
+//
 public class WoodBlockFactory implements Factory{
     public Resource bin;
+    public ResourceType resourceType;
+
     public WoodBlockFactory() {
+        // New Resource delegate for accumulating storedWeight
         bin = new Resource(ResourceType.WOOD, 0);
     }
 
-    public void takeResource(Object intake) {
-        if (intake instanceof Resource) { // If the Object is a valid Resource...
-            if (((Resource) intake).getType() == ResourceType.WOOD) { //
-                double availableResource = ((Resource) intake).getStoredWeight();
-                System.out.println("AVAILABLE WOOD RESOURCE: " + availableResource);
-                System.out.println("EXISTING WOOD INVENTORY");
-                displayInventory();
-                bin.modifyResource(availableResource);
-                ((Resource) intake).modifyResource(-availableResource);
-                System.out.println("UPDATED WOOD INVENTORY");
-                displayInventory();
-            //
-            } else {//System.out.println("WoodBlockFactory.takeResource: Resource type mismatch");
-            }
+    public boolean takeResource(Object intake){
 
-        } else if (intake == null) {
-            //System.out.println("WoodBlockFactory.takeResource: Null resource");
-
-        } else {
-            //System.out.println("WoodBlockFactory.takeResource: Illegal resource type");
-        }
     }
 
     public Block produce(){

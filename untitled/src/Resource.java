@@ -37,4 +37,29 @@ public class Resource {
         if (resourceAmount >= 0) {setStoredWeight(resourceAmount);}
         else {throw new NegativeResource("The stored weight cannot be negative.");}
     }
+
+    // takeResource refactored to the Resource parent class
+    // Takes Resource and transfers value to current instance
+    public boolean takeResource(Object intake) {
+        if (intake instanceof Resource) { // If the Object is a valid Resource...
+            if (((Resource) intake).getType() == this.getType()) { // And its of the appropriate type...
+                double availableResource = ((Resource) intake).getStoredWeight();
+
+                this.modifyResource(availableResource); // Increment local storage
+                ((Resource) intake).modifyResource(-availableResource); // Subtract it from the target Resource
+
+                return true;
+            } else { // Resource ResourceType mismatch
+                //System.out.println("WoodBlockFactory.takeResource: Resource type mismatch");
+                return false;
+            }
+
+        } else if (intake == null) { // null Object passed to takeResource
+            //System.out.println("WoodBlockFactory.takeResource: Null resource");
+            return false;
+        } else { // invalid Object passed
+            //System.out.println("WoodBlockFactory.takeResource: Illegal object type");
+            return false;
+        }
+    }
 }
