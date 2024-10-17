@@ -27,7 +27,7 @@ public class ElementalFactoryDelegate implements Factory{
         try {
             bin.modifyResource(-resourceType.getWeight());
 
-            return new WoodBlock();
+            return new Block(resourceType.get);
         }
         catch (NegativeResource nr){
             //System.out.println(nr.getMessage());

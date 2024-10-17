@@ -7,20 +7,27 @@
 public enum ResourceType {
     // Repository of ResourceType data
     // Public static final ResourceType STONE = new ResourceType(5.5);
-    STONE(5.5, "Stone"),
-    WOOD(2.5, "Wood"),
+    STONE(Const.STONE_WEIGHT, "Stone", 1, false),
+    WOOD(Const.WOOD_WEIGHT, "Wood", 0.5,false),
 
     // Crafted ResourceTypes
-    HOUSE(STONE.weight*Const.WOOD_IN_HOUSE
-               + WOOD.weight*Const.STONE_IN_HOUSE,
-                "House");
+    HOUSE(STONE.weight * Const.WOOD_IN_HOUSE
+               + WOOD.weight * Const.STONE_IN_HOUSE,
+                "House",
+        STONE.weight * Const.STONE_IN_HOUSE //
+                    / (STONE.weight * Const.STONE_IN_HOUSE + WOOD.weight * Const.WOOD_IN_HOUSE),
+    true);
 
     private final double weight;
     private final String name;
+    private final double breakdownFactor;
+    private boolean crafted;
 
-    ResourceType(double weight, String name) {
+    ResourceType(double weight, String name, double breakdownFactor, boolean crafted) {
         this.weight = weight;
         this.name = name;
+        this.breakdownFactor = breakdownFactor;
+        this.crafted = crafted;
     }
 
     // Getters for ResourceType fields
