@@ -13,4 +13,6 @@ public final class Const {
     // House recipe info
     public static final int WOOD_IN_HOUSE = 10;
     public static final int STONE_IN_HOUSE = 4;
+
+
 }

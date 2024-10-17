@@ -5,7 +5,7 @@
  * Notes: Complex factory simulation
  */
 public interface Factory {
-    void takeResource(Object resourceBlock);
+    boolean takeResource(Object resourceBlock);
     Block produce();
     void displayInventory();
 }

@@ -6,18 +6,19 @@
  */
 
 //
-public class WoodBlockFactory implements Factory{
+public class ElementalFactory implements Factory{
     public Resource bin;
     public ResourceType resourceType;
 
-    public WoodBlockFactory() {
+    public ElementalFactory(ResourceType resourceType) {
         // New Resource delegate for accumulating storedWeight
+        this.resourceType = resourceType;
         bin = new Resource(this.resourceType, 0);
     }
 
+    // Flag for successful object intake
     public boolean takeResource(Object intake){
-
-        return false;
+        return bin.takeResource(intake);
     }
 
     public Block produce(){

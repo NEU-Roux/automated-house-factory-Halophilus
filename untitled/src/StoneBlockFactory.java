@@ -10,7 +10,7 @@ public class StoneBlockFactory implements Factory{
         bin = new Resource(ResourceType.STONE, 0);
     }
 
-    public void takeResource(Object intake) {
+    public boolean takeResource(Object intake) {
         if (intake instanceof Resource) {
             if (((Resource) intake).getType() == ResourceType.STONE) {
                 double availableResource = ((Resource) intake).getStoredWeight();
@@ -32,6 +32,7 @@ public class StoneBlockFactory implements Factory{
         } else {
             //System.out.println("StoneBlockFactory.takeResource: Illegal resource type");
         }
+        return false;
     }
 
     public Block produce(){

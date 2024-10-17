@@ -6,7 +6,7 @@ public class HouseFactory implements Factory{
         woodBlocks = 0;
     }
 
-    public void takeResource(Object intake) {
+    public boolean takeResource(Object intake) {
         if (intake instanceof Block) {
             if (((Block) intake).getResourceType() == ResourceType.STONE) {
                 stoneBlocks++;
@@ -18,6 +18,7 @@ public class HouseFactory implements Factory{
         } else {
             //System.out.println("WoodBlockFactory.takeResource: Illegal resource type");
         }
+        return false;
     }
 
     public Block produce(){
