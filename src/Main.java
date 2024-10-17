@@ -82,7 +82,7 @@ public class Main
             case 0: type = ResourceType.STONE; break;
             case 1: type = ResourceType.WOOD; break;
         }
-        // System.out.println("GENERATED " + type + " OF WEIGHT " + weight);
+        System.out.println("GENERATED " + type + " OF WEIGHT " + weight);
         resourceList.add(new Resource(type, weight));
         return resourceList;
     }

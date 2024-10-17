@@ -38,7 +38,6 @@ public class HouseFactory implements Factory{
     }
 
     // Implementation for handling list of raw material (currently unimplemented)
-    @Override
     public ArrayList<Resource> takeResource(ArrayList<Resource> resources) {
         return null;
     }

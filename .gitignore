@@ -27,3 +27,12 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+*.xml
+*.xml
+*.xml
+.idea/modules.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/misc.xml
+.idea/modules.xml
+Report/Code Walkthrough.mp4

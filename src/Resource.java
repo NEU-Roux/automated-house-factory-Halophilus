@@ -25,6 +25,7 @@ public class Resource {
         return storedWeight;
     }
 
+    // Exception handling ensures that storedWeight is always positive
     private void setStoredWeight(double storedWeight) throws NegativeResource {
         if (storedWeight >= 0) {
             this.storedWeight = storedWeight;
@@ -56,7 +57,7 @@ public class Resource {
     // takeResource refactored to the Resource parent class
     // Takes Resource and transfers value to current instance
     public ArrayList<Resource> takeResource(ArrayList<Resource> resources) {
-        for (Resource resource : resources) { // For all of the
+        for (Resource resource : resources) { // For all the available Resources...
             if (this.getType() == resource.resourceType) { // And its of the appropriate type...
                 double availableResource = resource.getStoredWeight();
                 this.modifyResource(availableResource); // Increment local storage
