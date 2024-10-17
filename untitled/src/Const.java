@@ -28,7 +28,7 @@ public final class Const {
     static {
         HOUSE_RETURN.put(ResourceType.STONE, STONE_IN_HOUSE * STONE_WEIGHT);
         STONE_RETURN.put(ResourceType.STONE, STONE_WEIGHT);
-        WOOD_RETURN.put(ResourceType.WOOD, STONE_WEIGHT);
+        WOOD_RETURN.put(ResourceType.WOOD, WOOD_WEIGHT * 0.5);
     }
 
 
