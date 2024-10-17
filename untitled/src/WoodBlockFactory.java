@@ -5,9 +5,9 @@
  * Notes: Complex factory simulation
  */
 
-//
+// Delegation of the WoodBlockFactory
 public class WoodBlockFactory{
-    private ElementalFactoryDelegate delegate;
+    private final ElementalFactoryDelegate delegate;
 
     public WoodBlockFactory(){
         delegate = new ElementalFactoryDelegate(ResourceType.WOOD);
@@ -19,6 +19,10 @@ public class WoodBlockFactory{
 
     public Block produce(){
         return delegate.produce();
+    }
+
+    public void displayInventory(){
+        delegate.displayInventory();
     }
 
 }

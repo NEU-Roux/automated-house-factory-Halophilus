@@ -4,51 +4,24 @@
  * Date: 10/14/2024
  * Notes: Complex factory simulation
  */
-public class StoneBlockFactory implements Factory{
-    public Resource bin;
-    public StoneBlockFactory() {
-        bin = new Resource(ResourceType.STONE, 0);
+// Delegation of the StoneBlockFactory
+public class StoneBlockFactory{
+    private final ElementalFactoryDelegate delegate;
+
+    public StoneBlockFactory(){
+        delegate = new ElementalFactoryDelegate(ResourceType.STONE;
     }
 
-    public boolean takeResource(Object intake) {
-        if (intake instanceof Resource) {
-            if (((Resource) intake).getType() == ResourceType.STONE) {
-                double availableResource = ((Resource) intake).getStoredWeight();
-                System.out.println("AVAILABLE STONE RESOURCE: " + availableResource);
-                System.out.println("EXISTING STONE INVENTORY");
-                displayInventory();
-                bin.modifyResource(availableResource);
-                ((Resource) intake).modifyResource(-availableResource);
-                System.out.println("UPDATED STONE INVENTORY");
-                displayInventory();
-
-            } else {
-                //System.out.println("StoneBlockFactory.takeResource: Resource type mismatch");
-            }
-
-        } else if (intake == null) {
-            //System.out.println("StoneBlockFactory.takeResource: Null resource");
-
-        } else {
-            //System.out.println("StoneBlockFactory.takeResource: Illegal resource type");
-        }
-        return false;
+    public boolean takeResource(Object intake){
+        return delegate.takeResource(intake);
     }
 
     public Block produce(){
-        try {
-
-            bin.modifyResource(-Const.STONE_WEIGHT);
-            System.out.println("STONE BLOCK PRODUCED");
-            System.out.println("UPDATED STONE INVENTORY: ");
-            displayInventory();
-            return new StoneBlock();
-        }
-        catch (NegativeResource nr){System.out.println(nr.getMessage());}
-        return null;
+        return delegate.produce();
     }
 
     public void displayInventory(){
-        System.out.printf("%.2f\n", bin.getStoredWeight());
+        delegate.displayInventory();
     }
+
 }

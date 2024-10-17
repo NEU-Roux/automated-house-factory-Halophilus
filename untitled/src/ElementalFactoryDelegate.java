@@ -18,16 +18,17 @@ public class ElementalFactoryDelegate implements Factory{
     }
 
     // Flag for successful object intake
-    public boolean takeResource(Object intake){
+    public boolean takeResource(){
         return bin.takeResource(intake);
     }
 
+    //
     // Produces Blocks of local ResourceType, null default
     public Block produce(){
         try {
             bin.modifyResource(-resourceType.getWeight());
 
-            return new Block(resourceType.get);
+            return new Block(resourceType);
         }
         catch (NegativeResource nr){
             //System.out.println(nr.getMessage());

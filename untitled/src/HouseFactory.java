@@ -1,6 +1,7 @@
 public class HouseFactory implements Factory{
     public int stoneBlocks;
     public int woodBlocks;
+
     public HouseFactory() {
         stoneBlocks = 0;
         woodBlocks = 0;

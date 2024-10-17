@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 /******
  * Name: Ben Henshaw
  * Assignment: Lab 04: Automated House Factory
@@ -7,36 +10,32 @@
 public enum ResourceType {
     // Repository of ResourceType data
     // Public static final ResourceType STONE = new ResourceType(5.5);
-    STONE(Const.STONE_WEIGHT, "Stone", 1, false),
-    WOOD(Const.WOOD_WEIGHT, "Wood", 0.5,false),
+    STONE(Const.STONE_WEIGHT, "Stone", Const.STONE_RETURN),
+    WOOD(Const.WOOD_WEIGHT, "Wood", Const.WOOD_RETURN),
 
     // Crafted ResourceTypes
-    HOUSE(STONE.weight * Const.WOOD_IN_HOUSE
-               + WOOD.weight * Const.STONE_IN_HOUSE,
-                "House",
-        STONE.weight * Const.STONE_IN_HOUSE //
-                    / (STONE.weight * Const.STONE_IN_HOUSE + WOOD.weight * Const.WOOD_IN_HOUSE),
-    true);
+    HOUSE(Const.HOUSE_WEIGHT, "House", Const.HOUSE_RETURN);
 
     private final double weight;
     private final String name;
-    private final double breakdownFactor;
-    private boolean crafted;
+    private final Map<ResourceType, Double> yields;
 
-    ResourceType(double weight, String name, double breakdownFactor, boolean crafted) {
+
+    ResourceType(double weight, String name, Map<ResourceType, Double> yields) {
         this.weight = weight;
         this.name = name;
-        this.breakdownFactor = breakdownFactor;
-        this.crafted = crafted;
+        this.yields = yields;
     }
-
     // Getters for ResourceType fields
     public double getWeight() {return this.weight;}
     public String getName() {return this.name;}
+    public Map<ResourceType, Double> getYields() {return yields;}
 
     @Override
     public String toString() {
         return getName();
     }
+
+
 }
 
